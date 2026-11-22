@@ -66,9 +66,9 @@
 <action name="actionSelectAll"><property name="text"><string>全选</string></property><property name="shortcut"><string>Ctrl+A</string></property></action>
 <action name="actionFind"><property name="text"><string>查找 / 替换…</string></property><property name="shortcut"><string>Ctrl+F</string></property></action>
 <action name="actionFont"><property name="text"><string>设置字体…</string></property></action>
-<action name="actionBold"><property name="text"><string>粗体</string></property><property name="shortcut"><string>Ctrl+B</string></property><property name="checkable"><bool>true</bool></property></action>
-<action name="actionItalic"><property name="text"><string>斜体</string></property><property name="shortcut"><string>Ctrl+I</string></property><property name="checkable"><bool>true</bool></property></action>
-<action name="actionUnderline"><property name="text"><string>下划线</string></property><property name="shortcut"><string>Ctrl+U</string></property><property name="checkable"><bool>true</bool></property></action>
+<action name="actionBold"><property name="text"><string>粗体</string></property><property name="iconText"><string>B</string></property><property name="shortcut"><string>Ctrl+B</string></property><property name="checkable"><bool>true</bool></property></action>
+<action name="actionItalic"><property name="text"><string>斜体</string></property><property name="iconText"><string>I</string></property><property name="shortcut"><string>Ctrl+I</string></property><property name="checkable"><bool>true</bool></property></action>
+<action name="actionUnderline"><property name="text"><string>下划线</string></property><property name="iconText"><string>U</string></property><property name="shortcut"><string>Ctrl+U</string></property><property name="checkable"><bool>true</bool></property></action>
 <action name="actionLeft"><property name="text"><string>左对齐</string></property></action>
 <action name="actionCenter"><property name="text"><string>居中</string></property></action>
 <action name="actionRight"><property name="text"><string>右对齐</string></property></action>

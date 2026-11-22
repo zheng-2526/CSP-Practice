@@ -8,7 +8,7 @@ Three standalone Qt Widgets projects for practising desktop development in C++17
 | --- | --- |
 | [Qt-Calculator](Qt-Calculator/README.md) | 支持键盘输入、嵌套括号和运算优先级，以及取模、平方根和倒数。 |
 | [Qt-Puzzle-Game](Qt-Puzzle-Game/README.md) | 拖动交换拼图块，支持 3×3、4×4、5×5 和本地图片。点击“开始挑战”后进入 15 秒倒计时。 |
-| [Qt-Multi-Document-Editor](Qt-Multi-Document-Editor/README.md) | 在同一窗口中编辑多个文档，支持文字格式、查找替换和窗口平铺。TXT 保存纯文本，HTML 保留文字格式。 |
+| [Qt-Multi-Document-Editor](Qt-Multi-Document-Editor/README.md) | 在同一窗口中编辑多个文档，支持文字格式、查找替换和窗口平铺。Windows 支持 RTF 读写，也可使用 TXT 或 HTML。 |
 
 ## 用 Qt Creator 打开
 

@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "documenteditor.h"
+#include "rtfcodec.h"
 #include "ui_mainwindow.h"
 
 #include <QCloseEvent>
@@ -15,6 +16,8 @@
 #include <QPushButton>
 #include <QSignalBlocker>
 #include <QStyleHints>
+#include <QStyle>
+#include <QToolButton>
 #include <QGuiApplication>
 #include <QSpinBox>
 #include <QTextCursor>
@@ -34,9 +37,22 @@ MainWindow::MainWindow(QWidget *parent)
     fontSize->setValue(12);
     fontCombo->setToolTip(QStringLiteral("字体"));
     fontSize->setToolTip(QStringLiteral("字号（磅）"));
-    ui->toolBar->addSeparator();
-    ui->toolBar->addWidget(fontCombo);
-    ui->toolBar->addWidget(fontSize);
+    ui->actionNew->setIcon(style()->standardIcon(QStyle::SP_FileIcon));
+    ui->actionOpen->setIcon(style()->standardIcon(QStyle::SP_DialogOpenButton));
+    ui->actionSave->setIcon(style()->standardIcon(QStyle::SP_DialogSaveButton));
+    ui->toolBar->insertWidget(ui->actionBold, fontCombo);
+    ui->toolBar->insertWidget(ui->actionBold, fontSize);
+    const QList<QAction *> styleActions{ui->actionBold, ui->actionItalic, ui->actionUnderline};
+    for(auto action : styleActions) {
+        auto button = qobject_cast<QToolButton *>(ui->toolBar->widgetForAction(action));
+        if(!button) continue;
+        QFont font = button->font();
+        font.setBold(action == ui->actionBold);
+        font.setItalic(action == ui->actionItalic);
+        font.setUnderline(action == ui->actionUnderline);
+        button->setFont(font);
+        button->setToolButtonStyle(Qt::ToolButtonTextOnly);
+    }
 
     connect(ui->startButton, &QPushButton::clicked, this, [this]() {
         ui->pages->setCurrentWidget(ui->mdiArea);
@@ -57,7 +73,7 @@ MainWindow::MainWindow(QWidget *parent)
     });
     connect(ui->actionAbout, &QAction::triggered, this, [this]() {
         QMessageBox::about(this, QStringLiteral("关于"),
-            QStringLiteral("多文档文本编辑器\n作者：郑亚泽\n支持 TXT 和 HTML 文档"));
+            QStringLiteral("多文档文本编辑器\n作者：郑亚泽\n支持 TXT、HTML 和 Windows RTF 文档"));
     });
 
     // 每个编辑命令都作用于当前激活的子窗口。
@@ -138,8 +154,10 @@ DocumentEditor *MainWindow::newDocument() {
 }
 
 void MainWindow::openDocument() {
-    QString path = QFileDialog::getOpenFileName(this, QStringLiteral("打开文档"), QString(),
-        QStringLiteral("文本和 HTML 文档 (*.txt *.html *.htm)"));
+    QString filter = RtfCodec::available()
+        ? QStringLiteral("支持的文档 (*.rtf *.txt *.html *.htm);;RTF 富文本 (*.rtf)")
+        : QStringLiteral("支持的文档 (*.txt *.html *.htm)");
+    QString path = QFileDialog::getOpenFileName(this, QStringLiteral("打开文档"), QString(), filter);
     if(path.isEmpty()) return;
     auto editor = newDocument();
     if(!editor->loadFile(path)) editor->close();
