@@ -1,0 +1,24 @@
+# CMake 和 Qt Creator 生成的文件
+/build*/
+/*/build*/
+**/cmake-build-*/
+**/CMakeFiles/
+**/CMakeCache.txt
+**/Testing/
+**/.cache/
+**/.qtcreator/
+*.user
+*.user.*
+CMakeUserPresets.json
+
+# 编译产物和编辑器临时文件
+*.exe
+*.dll
+*.obj
+*.o
+*.pdb
+*.a
+*.lib
+*.swp
+Thumbs.db
+.DS_Store

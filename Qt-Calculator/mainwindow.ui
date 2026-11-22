@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QWidget" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>460</width>
+    <height>560</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>460</width>
+    <height>560</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>460</width>
+    <height>560</height>
+   </size>
+  </property>
+  <property name="focusPolicy">
+   <enum>Qt::StrongFocus</enum>
+  </property>
+  <property name="windowTitle">
+   <string>简单计算器</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+    background: #f2f2f2;
+    color: #202020;
+    font-family: "Microsoft YaHei UI";
+    font-size: 15px;
+}
+QWidget#welcomePage {
+    background: #ffffff;
+}
+QLabel#welcomeLabel {
+    background: transparent;
+    color: #202020;
+    font-size: 30px;
+    font-weight: 600;
+}
+QLabel#introLabel {
+    background: transparent;
+    color: #606060;
+    font-size: 14px;
+}
+QLabel#authorLabel {
+    background: transparent;
+    color: #707070;
+    font-size: 12px;
+}
+QPushButton#startButton {
+    background: #f5f5f5;
+    border: 1px solid #909090;
+    border-radius: 2px;
+    color: #202020;
+    font-size: 16px;
+    font-weight: 400;
+}
+QPushButton#startButton:hover {
+    background: #e9f3ff;
+    border-color: #4b83c3;
+}
+QLabel#formulaLabel {
+    background: transparent;
+    color: #606060;
+    font-size: 13px;
+    padding-right: 4px;
+}
+QLabel#displayLabel {
+    background: #ffffff;
+    border: 1px solid #9f9f9f;
+    border-radius: 0px;
+    color: #202020;
+    font-size: 28px;
+    font-weight: 400;
+    padding: 6px 10px;
+}
+QPushButton {
+    background: #f7f7f7;
+    border: 1px solid #a6a6a6;
+    border-radius: 2px;
+    color: #202020;
+    font-size: 18px;
+    font-weight: 400;
+}
+QPushButton[buttonType="number"] {
+    color: #2438b8;
+}
+QPushButton[buttonType="operator"] {
+    color: #d13232;
+}
+QPushButton[buttonType="extra"] {
+    color: #2438b8;
+}
+QPushButton[buttonType="equal"] {
+    color: #2438b8;
+}
+QPushButton:hover {
+    background: #e9f3ff;
+    border-color: #4b83c3;
+}
+QPushButton:pressed {
+    background: #d8e9fb;
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="mainLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QStackedWidget" name="pages">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="welcomePage">
+      <layout class="QVBoxLayout" name="welcomeLayout">
+       <property name="leftMargin">
+        <number>30</number>
+       </property>
+       <property name="topMargin">
+        <number>30</number>
+       </property>
+       <property name="rightMargin">
+        <number>30</number>
+       </property>
+       <property name="bottomMargin">
+        <number>24</number>
+       </property>
+       <item>
+        <spacer name="welcomeTopSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>120</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="welcomeLabel">
+         <property name="text">
+          <string>欢迎使用</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="welcomeTextSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>8</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="introLabel">
+         <property name="text">
+          <string>简单计算器</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="welcomeButtonSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>28</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item alignment="Qt::AlignHCenter">
+        <widget class="QPushButton" name="startButton">
+         <property name="minimumSize">
+          <size>
+           <width>180</width>
+           <height>48</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>180</width>
+           <height>48</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>开始使用</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="welcomeBottomSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>120</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="authorLabel">
+         <property name="text">
+          <string>作者：郑亚泽</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="calculatorPage">
+      <layout class="QVBoxLayout" name="calculatorLayout">
+       <property name="spacing">
+        <number>8</number>
+       </property>
+       <property name="leftMargin">
+        <number>16</number>
+       </property>
+       <property name="topMargin">
+        <number>16</number>
+       </property>
+       <property name="rightMargin">
+        <number>16</number>
+       </property>
+       <property name="bottomMargin">
+        <number>16</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="formulaLabel">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>24</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>24</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="displayLabel">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>70</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>70</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="displaySpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>4</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QGridLayout" name="buttonGrid">
+         <property name="horizontalSpacing">
+          <number>6</number>
+         </property>
+         <property name="verticalSpacing">
+          <number>6</number>
+         </property>
+         <item row="0" column="0">
+          <widget class="QPushButton" name="clearButton">
+           <property name="minimumSize">
+            <size><width>68</width><height>58</height></size>
+           </property>
+           <property name="focusPolicy"><enum>Qt::NoFocus</enum></property>
+           <property name="text"><string>清空</string></property>
+           <property name="buttonType" stdset="0"><string>function</string></property>
+          </widget>
+         </item>
+         <item row="0" column="1" colspan="2">
+          <widget class="QPushButton" name="backButton">
+           <property name="minimumSize">
+            <size><width>68</width><height>58</height></size>
+           </property>
+           <property name="focusPolicy"><enum>Qt::NoFocus</enum></property>
+           <property name="text"><string>退格</string></property>
+           <property name="buttonType" stdset="0"><string>function</string></property>
+          </widget>
+         </item>
+         <item row="0" column="3">
+          <widget class="QPushButton" name="leftParenthesisButton">
+           <property name="minimumSize"><size><width>68</width><height>58</height></size></property>
+           <property name="focusPolicy"><enum>Qt::NoFocus</enum></property>
+           <property name="text"><string>(</string></property>
+           <property name="buttonType" stdset="0"><string>extra</string></property>
+          </widget>
+         </item>
+         <item row="0" column="4">
+          <widget class="QPushButton" name="rightParenthesisButton">
+           <property name="minimumSize"><size><width>68</width><height>58</height></size></property>
+           <property name="focusPolicy"><enum>Qt::NoFocus</enum></property>
+           <property name="text"><string>)</string></property>
+           <property name="buttonType" stdset="0"><string>extra</string></property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QPushButton" name="digit7Button">
+           <property name="minimumSize"><size><width>68</width><height>58</height></size></property>
+           <property name="focusPolicy"><enum>Qt::NoFocus</enum></property>
+           <property name="text"><string>7</string></property>
+           <property name="buttonType" stdset="0"><string>number</string></property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QPushButton" name="digit8Button">
+           <property name="minimumSize"><size><width>68</width><height>58</height></size></property>
+           <property name="focusPolicy"><enum>Qt::NoFocus</enum></property>
+           <property name="text"><string>8</string></property>
+           <property name="buttonType" stdset="0"><string>number</string></property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QPushButton" name="digit9Button">
+           <property name="minimumSize"><size><width>68</width><height>58</height></size></property>
+           <property name="focusPolicy"><enum>Qt::NoFocus</enum></property>
+           <property name="text"><string>9</string></property>
+           <property name="buttonType" stdset="0"><string>number</string></property>
+          </widget>
+         </item>
+         <item row="1" column="3">
+          <widget class="QPushButton" name="subtractButton">
+           <property name="minimumSize"><size><width>68</width><height>58</height></size></property>
+           <property name="focusPolicy"><enum>Qt::NoFocus</enum></property>
+           <property name="text"><string>−</string></property>
+           <property name="buttonType" stdset="0"><string>operator</string></property>
+          </widget>
+         </item>
+         <item row="1" column="4">
+          <widget class="QPushButton" name="rootButton">
+           <property name="minimumSize"><size><width>68</width><height>58</height></size></property>
+           <property name="focusPolicy"><enum>Qt::NoFocus</enum></property>
+           <property name="text"><string>√</string></property>
+           <property name="buttonType" stdset="0"><string>extra</string></property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QPushButton" name="digit4Button">
+           <property name="minimumSize"><size><width>68</width><height>58</height></size></property>
+           <property name="focusPolicy"><enum>Qt::NoFocus</enum></property>
+           <property name="text"><string>4</string></property>
+           <property name="buttonType" stdset="0"><string>number</string></property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QPushButton" name="digit5Button">
+           <property name="minimumSize"><size><width>68</width><height>58</height></size></property>
+           <property name="focusPolicy"><enum>Qt::NoFocus</enum></property>
+           <property name="text"><string>5</string></property>
+           <property name="buttonType" stdset="0"><string>number</string></property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="QPushButton" name="digit6Button">
+           <property name="minimumSize"><size><width>68</width><height>58</height></size></property>
+           <property name="focusPolicy"><enum>Qt::NoFocus</enum></property>
+           <property name="text"><string>6</string></property>
+           <property name="buttonType" stdset="0"><string>number</string></property>
+          </widget>
+         </item>
+         <item row="2" column="3">
+          <widget class="QPushButton" name="addButton">
+           <property name="minimumSize"><size><width>68</width><height>58</height></size></property>
+           <property name="focusPolicy"><enum>Qt::NoFocus</enum></property>
+           <property name="text"><string>+</string></property>
+           <property name="buttonType" stdset="0"><string>operator</string></property>
+          </widget>
+         </item>
+         <item row="2" column="4">
+          <widget class="QPushButton" name="modButton">
+           <property name="minimumSize"><size><width>68</width><height>58</height></size></property>
+           <property name="focusPolicy"><enum>Qt::NoFocus</enum></property>
+           <property name="text"><string>%</string></property>
+           <property name="buttonType" stdset="0"><string>extra</string></property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QPushButton" name="digit1Button">
+           <property name="minimumSize"><size><width>68</width><height>58</height></size></property>
+           <property name="focusPolicy"><enum>Qt::NoFocus</enum></property>
+           <property name="text"><string>1</string></property>
+           <property name="buttonType" stdset="0"><string>number</string></property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QPushButton" name="digit2Button">
+           <property name="minimumSize"><size><width>68</width><height>58</height></size></property>
+           <property name="focusPolicy"><enum>Qt::NoFocus</enum></property>
+           <property name="text"><string>2</string></property>
+           <property name="buttonType" stdset="0"><string>number</string></property>
+          </widget>
+         </item>
+         <item row="3" column="2">
+          <widget class="QPushButton" name="digit3Button">
+           <property name="minimumSize"><size><width>68</width><height>58</height></size></property>
+           <property name="focusPolicy"><enum>Qt::NoFocus</enum></property>
+           <property name="text"><string>3</string></property>
+           <property name="buttonType" stdset="0"><string>number</string></property>
+          </widget>
+         </item>
+         <item row="3" column="3">
+          <widget class="QPushButton" name="multiplyButton">
+           <property name="minimumSize"><size><width>68</width><height>58</height></size></property>
+           <property name="focusPolicy"><enum>Qt::NoFocus</enum></property>
+           <property name="text"><string>×</string></property>
+           <property name="buttonType" stdset="0"><string>operator</string></property>
+          </widget>
+         </item>
+         <item row="3" column="4">
+          <widget class="QPushButton" name="reciprocalButton">
+           <property name="minimumSize"><size><width>68</width><height>58</height></size></property>
+           <property name="focusPolicy"><enum>Qt::NoFocus</enum></property>
+           <property name="text"><string>1/x</string></property>
+           <property name="buttonType" stdset="0"><string>extra</string></property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QPushButton" name="signButton">
+           <property name="minimumSize"><size><width>68</width><height>58</height></size></property>
+           <property name="focusPolicy"><enum>Qt::NoFocus</enum></property>
+           <property name="text"><string>±</string></property>
+           <property name="buttonType" stdset="0"><string>extra</string></property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QPushButton" name="digit0Button">
+           <property name="minimumSize"><size><width>68</width><height>58</height></size></property>
+           <property name="focusPolicy"><enum>Qt::NoFocus</enum></property>
+           <property name="text"><string>0</string></property>
+           <property name="buttonType" stdset="0"><string>number</string></property>
+          </widget>
+         </item>
+         <item row="4" column="2">
+          <widget class="QPushButton" name="pointButton">
+           <property name="minimumSize"><size><width>68</width><height>58</height></size></property>
+           <property name="focusPolicy"><enum>Qt::NoFocus</enum></property>
+           <property name="text"><string>.</string></property>
+           <property name="buttonType" stdset="0"><string>number</string></property>
+          </widget>
+         </item>
+         <item row="4" column="3">
+          <widget class="QPushButton" name="divideButton">
+           <property name="minimumSize"><size><width>68</width><height>58</height></size></property>
+           <property name="focusPolicy"><enum>Qt::NoFocus</enum></property>
+           <property name="text"><string>÷</string></property>
+           <property name="buttonType" stdset="0"><string>operator</string></property>
+          </widget>
+         </item>
+         <item row="4" column="4">
+          <widget class="QPushButton" name="equalButton">
+           <property name="minimumSize"><size><width>68</width><height>58</height></size></property>
+           <property name="focusPolicy"><enum>Qt::NoFocus</enum></property>
+           <property name="text"><string>=</string></property>
+           <property name="buttonType" stdset="0"><string>equal</string></property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
